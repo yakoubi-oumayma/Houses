@@ -8,12 +8,9 @@ public class CityInterpreter implements Interpreter {
 
     protected String city ;
     protected String searchQuery;
-
     public CityInterpreter(String searchQuery){
         this.searchQuery=searchQuery;
     }
-
-
 
     @Override
     public String interpret() {

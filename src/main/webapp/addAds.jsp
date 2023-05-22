@@ -18,19 +18,14 @@
     <div class="collapse navbar-collapse" id="navbarNav" >
         <ul class="navbar-nav" >
             <li class="nav-item active">
-                <a class="nav-link" href="ads.jsp">Accueil <span class="sr-only"></span></a>
+                <a class="nav-link" href="listeAnnonces">Accueil <span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="addAds.jsp">Ajouter une annonce</a>
             </li>
+
             <li class="nav-item">
-                <a class="nav-link" href="MyReservations">Mes reservations</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="requestedReservations.jsp">Demandes de réservation</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="profile.jsp">Profil</a>
+                <a class="nav-link" href="ProfileServlet">Profil</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="" style="color: red;">Déconnexion</a>
@@ -39,8 +34,7 @@
     </div>
 </nav>
 <div class="formulaire">
-    <form  method="post" action="ajouterPetition.php">
-
+    <form  method="post" action="addAds" enctype="multipart/form-data">
         <center><h1>Ajouter une annonce pour votre maison </h1></center>
         <label for="titre">Titre de l'annonce</label>
         <input type="text" id="titre" name="titre" placeholder="titre">
@@ -57,6 +51,14 @@
         <label for="description">Description</label>
         <input type="text" id="description" name="description" placeholder="description...">
 
+        <label for="date_d">Date de début de disponiblité</label>
+        <input type="date" id="date_d" name="date_d" placeholder="...">
+
+        <label for="date_f">Date de fin de disponiblité</label>
+        <input type="date" id="date_f" name="date_f" placeholder="...">
+
+        <label for="image">Image </label>
+        <input type="file" id="image" name="image" placeholder="Image...">
 
         <input type="submit" value="Ajouter l'annonce">
     </form>
@@ -68,27 +70,30 @@
 
     body{
         background-color: #f2f2f2;
+        margin-bottom: 80px;
 
     }
     .formulaire form{
         width: 50%;
         margin-left: 300px;
-        margin-top: 100px;
+        margin-top: 70px;
 
     }
-    .formulaire input[type=text], input[type=number], select {
+    .formulaire input[type=text], input[type=number], input[type=date],input[type=file], select {
         width: 100%;
         padding: 12px 20px;
         margin: 8px 0;
         display: inline-block;
         border-radius: 4px;
         box-sizing: border-box;
+        outline: none;
+        border: none;
 
     }
 
     .formulaire input[type=submit] {
         width: 100%;
-        background-color: orange;
+        background-color: rgba(51, 21, 0, 0.9);
         color: white;
         padding: 14px 20px;
         margin: 8px 0;
@@ -98,7 +103,7 @@
     }
 
     .formulaire input[type=submit]:hover {
-        background-color: orange;
+        background-color: rgba(51, 21, 0, 0.59);
     }
 
     .formulaire div {

@@ -31,11 +31,9 @@
                   <h4 class="text-dark mb-4" style="color:#D7A86E !important;">Inscrivez-vous maintenant!</h4>
                 </div>
                 <form method="post" action="register" class="user">
-                  <div class="mb-3"><input class="form-control" type="text"   placeholder="nom d'utilisateur" name="username" value="" required /></div>
                   <div class="mb-3"><input class="form-control" type="text"  placeholder="nom" name="nom" value="" required  /></div>
                   <div class="mb-3"><input class="form-control " type="text"   placeholder="prenom" name="prenom" value="" required /></div>
                   <div class="mb-3"><input class="form-control " type="email"  placeholder="adresse email" name="email" value=""  required  /></div>
-                  <div class="mb-3"><input class="form-control " type="number"  placeholder="numéro de téléphone" name="tel" value=""  required  /></div>
                   <div class="mb-3"><input class="form-control " type="password"  placeholder="mot de passe" name="password" value="" required /></div>
                   <button class="btn btn-primary d-block btn-user w-100" type="submit" style="background-color: #D7A86E !important; border: #D7A86E">S'inscrire</button>
                   <div class="text-center"><a class="small" href="login.jsp" style="color: #D7A86E ;">Avez-vous déjà un compte?</a></div>
@@ -52,3 +50,11 @@
 <script src="assets/js/theme.js"></script>
 </body>
 </html>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  *{
+    letter-spacing: 1px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: large;
+  }
+</style>

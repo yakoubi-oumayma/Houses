@@ -3,19 +3,41 @@ package com.dp;
 import java.util.Date;
 
 public class Ad {
+    protected  Integer user_id;
     protected Integer annonce_id;
+
     protected Integer house_id;
     protected String titre ;
     protected String description;
     protected Date date_d;
+    protected String imgFileName;
     protected Date date_f;
+
+    protected String etat_annonce;
+
+    public String getEtat_annonce() {
+        return etat_annonce;
+    }
+
+    public void setEtat_annonce(String etat_annonce) {
+        this.etat_annonce = etat_annonce;
+    }
+
+    public String getImgFileName() {
+        return imgFileName;
+    }
+
+    public void setImgFileName(String imgFileName) {
+        this.imgFileName = imgFileName;
+    }
+
     protected House house;
 
     public House getHouse() {
         return house;
     }
 
-    public void setHouse(House house) {
+    public  void setHouse(House house) {
         this.house = house;
     }
 
@@ -76,6 +98,13 @@ public class Ad {
         return date_d;
     }
 
+    public Integer getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
+    }
     public Date getDate_f() {
         return date_f;
     }

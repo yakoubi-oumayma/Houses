@@ -23,12 +23,13 @@ public class SurfaceInterpreter implements Interpreter {
     public String toString() {
         return ""+surface ;
     }
+
+    @Override
     public String interpret() {
         List<String> query = List.of(searchQuery.split("\\s+"));
         for (int i = 0; i < query.size()-1; i++) {
-            System.out.println("hana dkhalt l dik la boucle int i");
+
             if(query.get(i).equalsIgnoreCase("surface")) {
-                System.out.println("hnaaa l9it le mot surface f my request");
                 surface = Integer.valueOf(query.get(i+2));
                 break;
 

@@ -1,9 +1,64 @@
 package com.dp;
 
-public class User implements HouseObserver{
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class User  {
     protected String username;
     protected String prenom;
     protected String nom;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public Integer getTel() {
+        return tel;
+    }
+
+    public void setTel(Integer tel) {
+        this.tel = tel;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     protected Integer tel;
     protected String email;
     protected String password;
@@ -18,16 +73,12 @@ public class User implements HouseObserver{
     }
 
     public User(String uname) {
-        this.username= uname;
+        this.username = uname;
     }
 
-    @Override
-    public void houseAvailabilityChanged(House house) {
-        if (house.isAvailable()) {
-            System.out.println("La maison est maintenant disponible !");
-            // Faire quelque chose ici, comme envoyer une notification à l'utilisateur
-        } else {
-            System.out.println("La maison n'est plus disponible.");
-        }
+    public User() {
+
     }
+
+
 }

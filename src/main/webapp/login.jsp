@@ -51,3 +51,11 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
  </body>
 </html>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  *{
+    letter-spacing: 1px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: large;
+  }
+</style>

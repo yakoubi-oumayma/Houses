@@ -10,40 +10,23 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-@WebServlet("/listeAnnonces")
+@WebServlet("/index")
 
-public class accueilServlet extends HttpServlet {
+public class indexServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-
-        if (session == null || session.getAttribute("email") == null) {
-            response.sendRedirect(request.getContextPath() + "/login.jsp");
-            return;
-        }
-
 
         HouseIterator iterator = new ListIterator();
         List<Ad> adList = new ArrayList<Ad>();
         while (iterator.HasNext()) {
             Ad ad = iterator.next();
-            System.out.println("user id = " + ad.getUser_id());
-            System.out.println("session attribute user id = " + session.getAttribute("user_id"));
-            int userIdFromAd = ad.getUser_id();
-            int userIdFromSession = Integer.parseInt(session.getAttribute("user_id").toString());
 
-            if(userIdFromAd == userIdFromSession){
-                System.out.println("annonce n'est pas affichée car c'est ça propre annonce");
-
-            }
-            else{
-              adList.add(ad);
-            }
+                adList.add(ad);
 
         }
         request.setAttribute("adList", adList);
-        this.getServletContext().getRequestDispatcher("/ads.jsp").forward(request, response) ;
-
+        this.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response) ;
     }
 
     @Override
@@ -82,17 +65,15 @@ public class accueilServlet extends HttpServlet {
                 String ville = rs.getString("ville");
                 int prix = rs.getInt("prix");
                 int surf = rs.getInt("surface");
-                HttpSession session = request.getSession(false);
-                Object user_id = session.getAttribute("user_id");
+
 
                 House houseMatch = new House();
                 houseMatch.setId(house_id);
                 houseMatch.setCity(ville);
                 houseMatch.setPrice(prix);
                 houseMatch.setSurface(surf);
-                PreparedStatement pst = con.prepareStatement("select * from annonces where user_id != ? AND house_id= ?");
-                pst.setObject(1, user_id);
-                pst.setInt(2, house_id);
+                PreparedStatement pst = con.prepareStatement("select * from annonces where  house_id= ?");
+                pst.setInt(1, house_id);
                 ResultSet result = pst.executeQuery();
                 while (result.next()){
                     int ad_id = result.getInt("annonce_id");
@@ -123,7 +104,7 @@ public class accueilServlet extends HttpServlet {
                 System.out.println("Titre:" + ad.getTitre());
             }
 
-            this.getServletContext().getRequestDispatcher("/ads.jsp").forward(request, response) ;
+            this.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response) ;
 
 
 
@@ -133,3 +114,4 @@ public class accueilServlet extends HttpServlet {
         }
     }
 }
+

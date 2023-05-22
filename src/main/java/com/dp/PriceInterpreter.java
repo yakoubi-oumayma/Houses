@@ -18,7 +18,6 @@ public class PriceInterpreter implements Interpreter{
 
     }
 
-
     @Override
     public String toString() {
         return ""+price ;

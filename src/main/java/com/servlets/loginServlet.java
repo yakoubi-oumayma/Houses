@@ -2,6 +2,7 @@ package com.servlets;
 
 import com.dp.Ad;
 import com.dp.House;
+import com.dp.User;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -12,14 +13,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.Date;
+import java.sql.*;
 
-import static com.dp.ConnexionDB.getConnexion;
 
 @WebServlet("/login")
 public class loginServlet extends HttpServlet {
@@ -44,14 +39,26 @@ public class loginServlet extends HttpServlet {
         pst.setString(2, upwd);
        ResultSet rs = pst.executeQuery();
        if(rs.next()){
-          session.setAttribute("name",rs.getString("email"));
-            dispatcher = request.getRequestDispatcher("ads.jsp");
+          session.setAttribute("email",rs.getString("email"));
+           session.setAttribute("user_id",rs.getInt("user_id"));
+           System.out.println("userrrr" + session.getAttribute("user_id") );
+           response.sendRedirect(request.getContextPath()+"/listeAnnonces");
+           User user= new User();
+           user.setNom(rs.getString("nom"));
+           user.setPrenom(rs.getString("prenom"));
+           user.setPrenom(rs.getString("email"));
+           House house = new House();
+           house.start();
+
+
+
        }
        else {
            request.setAttribute("status","failed");
            dispatcher = request.getRequestDispatcher("login.jsp");
+           dispatcher.forward(request, response);
+
        }
-       dispatcher.forward(request, response);
 
     }catch (Exception e){
         e.printStackTrace();
